@@ -18,8 +18,8 @@ public class Criar_encomenda {
         stmt.setString(7, e.transportadora);
         stmt.setString(8, e.status);
 
-    }catch (Exception e){
-        e.printStackTrace();
+    }catch (Exception error){
+        error.printStackTrace();
     }
     }
 

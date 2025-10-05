@@ -1,7 +1,7 @@
 package modelo;
 
 public class Encomendas {
-    public int id;
+    //public int id;
     public String codigo;
     public String nome_cliente;
     public String telefone;
@@ -12,8 +12,8 @@ public class Encomendas {
     public String status;
     public String observacoes;
 
-    public Encomendas(int id, String codigo, String nome_cliente, String telefone, String email, String documento, String descricao, String transportadora, String status, String observacoes){
-        this.id = id;
+    public Encomendas(String codigo, String nome_cliente, String telefone, String email, String documento, String descricao, String transportadora, String status, String observacoes){
+        //this.id = id;
         this.codigo = codigo;
         this.nome_cliente = nome_cliente;
         this.telefone = telefone;
@@ -24,9 +24,9 @@ public class Encomendas {
         this.status = status;
         this.observacoes = observacoes;
     }
-    public int getId(){
-        return id;
-    }
+    //public int getId(){
+       // return id;
+    //}
     public String getCodigo(){
         return codigo;
     }
