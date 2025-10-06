@@ -19,7 +19,7 @@ public class Main {
         String descricao = sc.nextLine();
         System.out.println("Transportadora :");
         String transportadora = sc.nextLine();
-        String status = "Balcão";
+        String status = "Aguardando retirada";
         System.out.println("Obs:");
         String observacao = sc.nextLine();
 

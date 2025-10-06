@@ -17,9 +17,14 @@ public class Criar_encomenda {
         stmt.setString(6, e.descricao);
         stmt.setString(7, e.transportadora);
         stmt.setString(8, e.status);
+        stmt.setString(9, e.observacoes);
 
-    }catch (Exception error){
-        error.printStackTrace();
+//        AQUI TAVA O ERRO:
+        stmt.executeUpdate();
+        System.out.println("✅ Encomenda salva com sucesso!");
+
+    }catch (Exception ez){
+        ez.printStackTrace();
     }
     }
 
