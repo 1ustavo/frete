@@ -22,6 +22,7 @@ public class Main {
         String status = "Aguardando retirada";
         System.out.println("Obs:");
         String observacao = sc.nextLine();
+        System.out.println("gugu");
 
      Encomendas e  = new Encomendas(codigo, nome_cliente, telefone, email, documento, descricao, transportadora, status, observacao);
 
