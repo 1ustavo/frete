@@ -8,6 +8,7 @@ public class Main {
         System.out.println("Olá, Bem vindo :");
         System.out.println("Deseja qual das funcões : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir, 5 - Sair.(SOMENTE NUMEROS)");
         int opcao = sc.nextInt();
+        sc.nextLine();
         switch (opcao){
             case 1 :
                 System.out.println("Você escolheu consultar : ");
@@ -18,12 +19,10 @@ public class Main {
                 break;
 
             case 2 :
-                System.out.print("Codigo : ");
+                System.out.println("Codigo : ");
                 String codigo = sc.nextLine();
-                System.out.print("codigo sasasa :" +codigo);
                 System.out.println("Nome Cliente :");
                 String nome_cliente = sc.nextLine();
-
                 System.out.println("Telefone :");
                 String telefone = sc.nextLine();
                 System.out.println("Email :");

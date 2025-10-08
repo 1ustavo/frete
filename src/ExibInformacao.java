@@ -2,25 +2,41 @@ import modelo.Encomendas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Scanner;
 
 
 public class ExibInformacao {
     public static void exibeEncomenda(String nome){
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Qual o nome do cliente :");
-        String nome_cliente = sc.nextLine();
 
         String sql = "SELECT * FROM objetos WHERE nome_cliente LIKE ?";
 
         try(Connection conn = Conexao.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)){
             //pesquisar no sql
-            stmt.setString(1, "%" + nome_cliente + "%");
+            stmt.setString(1, "%" + nome + "%");
              java.sql.ResultSet rs = stmt.executeQuery();
-            System.out.println("Escolhido" + rs);
+
+            boolean achou = false;
+
+            while (rs.next()) {
+                achou = true;
+                System.out.println("==== Encomenda ====");
+                System.out.println("Código: " + rs.getString("codigo"));
+                System.out.println("Cliente: " + rs.getString("nome_cliente"));
+                System.out.println("Telefone: " + rs.getString("telefone"));
+                System.out.println("Email: " + rs.getString("email"));
+                System.out.println("Documento: " + rs.getString("documento"));
+                System.out.println("Descrição: " + rs.getString("descricao"));
+                System.out.println("Transportadora: " + rs.getString("transportadora"));
+                System.out.println("Status: " + rs.getString("status"));
+                System.out.println("Observação: " + rs.getString("observacoes"));
+                System.out.println("====================");
+            }
+
+            if (!achou) {
+                System.out.println("Nenhum cliente encontrado com o nome: " + nome);
+            }
+
+
         }catch (Exception ez){
             ez.printStackTrace();
         }
