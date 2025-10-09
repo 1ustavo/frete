@@ -43,6 +43,14 @@ public class Main {
                 c.salvarEncomenda(e);
                 break;
 
+            case 4 :
+                System.out.println("Qual Numero de identificação (ID) :");
+                int id = sc.nextInt();
+
+                Delete del = new Delete();
+                del.deleteEncomenda(id);
+                break;
+
         }
 
 

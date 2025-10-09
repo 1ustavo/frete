@@ -20,6 +20,7 @@ public class ExibInformacao {
             while (rs.next()) {
                 achou = true;
                 System.out.println("==== Encomenda ====");
+                System.out.println("ID :"+ rs.getInt("id"));
                 System.out.println("Código: " + rs.getString("codigo"));
                 System.out.println("Cliente: " + rs.getString("nome_cliente"));
                 System.out.println("Telefone: " + rs.getString("telefone"));

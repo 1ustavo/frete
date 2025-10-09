@@ -19,7 +19,6 @@ public class Criar_encomenda {
         stmt.setString(8, e.status);
         stmt.setString(9, e.observacoes);
 
-//        AQUI TAVA O ERRO:
         stmt.executeUpdate();
         System.out.println("✅ Encomenda salva com sucesso!");
 
