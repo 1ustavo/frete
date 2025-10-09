@@ -42,10 +42,15 @@ public class Main {
                 Criar_encomenda c = new Criar_encomenda();
                 c.salvarEncomenda(e);
                 break;
-
+            case 3 :
+                System.out.println("Qual Numero de identificação (ID) : ");
+                int id = sc.nextInt();
+                Alterar alt = new Alterar();
+                alt.alterarEncomenda(id);
+                break;
             case 4 :
                 System.out.println("Qual Numero de identificação (ID) :");
-                int id = sc.nextInt();
+                id = sc.nextInt();
 
                 Delete del = new Delete();
                 del.deleteEncomenda(id);
