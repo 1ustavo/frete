@@ -6,9 +6,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Olá, Bem vindo :");
-        System.out.println("Deseja qual das funcões : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir, 5 - Sair.(SOMENTE NUMEROS)");
-        int opcao = sc.nextInt();
-        sc.nextLine();
+        int opcao = 0;
+
+        while (opcao != 5){
+
+            System.out.println("Deseja qual das funcões : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir, 5 - Sair.(SOMENTE NUMEROS)");
+            opcao = sc.nextInt();
+            sc.nextLine();
+
         switch (opcao){
             case 1 :
                 System.out.println("Você escolheu consultar : ");
@@ -57,7 +62,7 @@ public class Main {
                 break;
 
         }
-
+        }
 
         }
     }
