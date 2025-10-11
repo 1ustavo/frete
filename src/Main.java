@@ -28,7 +28,7 @@ public class Main {
                                 System.out.println("Você escolheu consultar : ");
                                 System.out.println("Digite nome do cliente : ");
                                 String nome = sc.nextLine();
-                                ExibInformacao ex = new ExibInformacao();
+                                Exibe ex = new Exibe();
                                 ex.exibeEncomenda(nome);
                                 break;
 
@@ -53,7 +53,7 @@ public class Main {
 
                                 Encomendas e  = new Encomendas(codigo, nome_cliente, telefone, email, documento, descricao, transportadora, status, observacao);
 
-                                Criar_encomenda c = new Criar_encomenda();
+                                Criar c = new Criar();
                                 c.salvarEncomenda(e);
                                 break;
                             case 3 :
@@ -87,7 +87,7 @@ public class Main {
                             System.out.println("Você escolheu consultar : ");
                             System.out.println("Digite nome do funcionario: ");
                             String nome = sc.nextLine();
-                            ExibFuncionario exb = new ExibFuncionario();
+                            Exibe exb = new Exibe();
                             exb.exibeFuncionario(nome);
                             break;
 
