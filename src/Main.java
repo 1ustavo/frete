@@ -1,5 +1,8 @@
 import modelo.Encomendas;
+import modelo.Funcionarios;
 import java.util.Scanner;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
@@ -91,6 +94,29 @@ public class Main {
                             exb.exibeFuncionario(nome);
                             break;
 
+                        case 2 :
+                            System.out.println("Você escolheu cadastras : ");
+                            System.out.println("Nome : ");
+                            nome = sc.nextLine();
+                            System.out.println("Email :");
+                            String email = sc.nextLine();
+                            System.out.println("Documento RG ou CPF");
+                            String documento = sc.nextLine();
+                            System.out.println("Senha : ");
+                            String senha = sc.nextLine();
+                            System.out.println("Idade : ");
+                            int idade = sc.nextInt();
+                            Funcionarios f  = new Funcionarios(nome, email, documento, senha, idade);
+
+                            Criar c = new Criar();
+                            c.salvarFuncionario(f);
+                            break;
+
+                        case 3 :
+                            System.out.println("Você escolheu alterar : ");
+                            Alterar alt = new Alterar();
+                            alt.alterarFuncionario(1);
+                            break;
                     }
 
 

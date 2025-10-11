@@ -153,4 +153,16 @@ public class Alterar {
         }
 
     }
+    public static void alterarFuncionario(int id){
+        String sql = "SELECT * FROM funcionarios WHERE id = ?";
+        try(Connection conn = Conexao.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            java.sql.ResultSet rs = stmt.executeQuery();
+            System.out.println("a "+ rs);
+
+    }catch (Exception ez){
+            ez.printStackTrace();
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class Criar {
         stmt.setString(4, f.senha);
         stmt.setInt(5, f.idade);
         stmt.executeUpdate();
-        System.out.println("✅ Encomenda salva com sucesso!");
+        System.out.println("✅ Funcionario salvo com sucesso!");
     }catch (SQLException ez){
         ez.printStackTrace();
     }

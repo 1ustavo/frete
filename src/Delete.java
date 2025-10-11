@@ -19,4 +19,19 @@ public class Delete {
         }
         return 0;
     }
+
+    public static int deleteFuncionario(int id){
+        String sql = "DELETE FROM funcionarios WHERE id = ?";
+
+        try(Connection conn = Conexao.getConnection();
+            PreparedStatement stmtfunci = conn.prepareStatement(sql)){
+
+            stmtfunci.setInt(1, id);
+            stmtfunci.executeUpdate();
+            System.out.println("Funcionario deletado com sucesso!");
+        }catch (Exception ez){
+            ez.printStackTrace();
+        }
+        return 0;
+    }
 }
