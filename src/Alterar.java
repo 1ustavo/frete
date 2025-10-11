@@ -154,15 +154,57 @@ public class Alterar {
 
     }
     public static void alterarFuncionario(int id){
+        Scanner sc = new Scanner(System.in);
         String sql = "SELECT * FROM funcionarios WHERE id = ?";
+
         try(Connection conn = Conexao.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, id);
             java.sql.ResultSet rs = stmt.executeQuery();
-            System.out.println("a "+ rs);
 
-    }catch (Exception ez){
-            ez.printStackTrace();
+            if (!rs.next()){
+                System.out.println("Funcionario não encontrado!");
+                return;
+            }
+            System.out.println("==== Funcionário ====");
+            System.out.println("1 - Nome: " + rs.getString("nome"));
+            System.out.println("2 - Email: " + rs.getString("email"));
+            System.out.println("3 - Documento: " + rs.getString("documento"));
+            System.out.println("4 - Senha: " + rs.getString("senha"));
+            System.out.println("5 - Idade: " + rs.getInt("idade"));
+            System.out.println("=====================");
+            System.out.print("Qual campo deseja alterar: ");
+            int opcao = sc.nextInt();
+            sc.nextLine();
+
+            String campo = switch (opcao) {
+                case 1 -> "nome";
+                case 2 -> "email";
+                case 3 -> "documento";
+                case 4 -> "senha";
+                case 5 -> "idade";
+                default -> null;
+            };
+
+            if (campo == null) {
+                System.out.println("Opção inválida!");
+                return;
+            }
+
+            System.out.print("Novo valor: ");
+            String novoValor = sc.nextLine();
+
+            String update = "UPDATE funcionarios SET " + campo + " = ? WHERE id = ?";
+            try (PreparedStatement up = conn.prepareStatement(update)) {
+                up.setString(1, novoValor);
+                up.setInt(2, id);
+                up.executeUpdate();
+                System.out.println("Alterado com sucesso!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

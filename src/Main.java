@@ -81,6 +81,7 @@ public class Main {
                     }
                     break;
                 case 2 :
+                    while(opcao != 5){
                     System.out.println("Deseja qual das funcões : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir, 5 - Sair.(SOMENTE NUMEROS)");
                     opcao = sc.nextInt();
                     sc.nextLine();
@@ -95,7 +96,7 @@ public class Main {
                             break;
 
                         case 2 :
-                            System.out.println("Você escolheu cadastras : ");
+                            System.out.println("Você escolheu cadastrar : ");
                             System.out.println("Nome : ");
                             nome = sc.nextLine();
                             System.out.println("Email :");
@@ -114,11 +115,30 @@ public class Main {
 
                         case 3 :
                             System.out.println("Você escolheu alterar : ");
+                            System.out.println("Informe o ID do funcionario: ");
+                            int idFunc = sc.nextInt();
                             Alterar alt = new Alterar();
-                            alt.alterarFuncionario(1);
+                            alt.alterarFuncionario(idFunc);
                             break;
-                    }
 
+                        case 4:
+                            System.out.println("Você escolheu excluir :");
+                            System.out.println("Informe o ID do funcionario: ");
+                            int idDel = sc.nextInt();
+                            sc.nextLine();
+                            Delete del = new Delete();
+                            del.deleteFuncionario(idDel);
+                            break;
+
+                        case 5:
+                            System.out.println("Saido do menu funcionario...");
+                            break;
+
+                        default:
+                            System.out.println("Opção invalida. Tente novamente.");
+                    }
+                }
+                break;
 
             }
         }
