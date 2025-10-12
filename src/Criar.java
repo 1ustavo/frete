@@ -1,3 +1,4 @@
+import conexao.Conexao;
 import modelo.Encomendas;
 import modelo.Funcionarios;
 import java.sql.Connection;

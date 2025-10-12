@@ -1,4 +1,5 @@
-import modelo.Encomendas;
+import conexao.Conexao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 

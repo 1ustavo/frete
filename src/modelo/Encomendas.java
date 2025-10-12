@@ -1,4 +1,8 @@
 package modelo;
+import conexao.Conexao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 
 public class Encomendas {
     public int id;
@@ -48,6 +52,30 @@ public class Encomendas {
     }
     public String getTransportadora(){
         return transportadora;
+    }
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(int id, int status){
+        String opcao = "";
+        if(status == 1){
+            opcao = "Aguardando retirada";
+        }if (status == 2){
+            opcao = "Entregue ao cliente";
+        }if (status == 3){
+            opcao = "Cancelado / devolvido";
+        }
+        String sql = "UPDATE objetos SET status = ? WHERE id = ?";
+
+        try(Connection conn = Conexao.getConnection();
+            PreparedStatement up = conn.prepareStatement(sql)){
+            up.setString(1, opcao);
+            up.setInt(2, id);
+            up.executeUpdate();
+            System.out.println("Status Alterado :"+ opcao);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public String getObs(){
         return observacoes;
