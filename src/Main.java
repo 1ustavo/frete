@@ -81,8 +81,8 @@ public class Main {
                     break;
 
                 case 2 :
-                    while(opcao != 5){
-                        System.out.println("Deseja qual das funções : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir, 5 - Sair.(SOMENTE NÚMEROS)");
+                    while(opcao != 7){
+                        System.out.println("Deseja qual das funções : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir, 6 - Sair, 5 - Retirar Encomenda.(SOMENTE NÚMEROS)");
                         opcao = sc.nextInt();
                         sc.nextLine();
 
@@ -130,7 +130,20 @@ public class Main {
                                 del.deleteFuncionario(idDel);
                                 break;
 
-                            case 5:
+                                case 5 :
+                                System.out.println("--- Registrar  Retirada ---");
+                                System.out.println("Informe o ID do Funcionario que está retirando");
+                                int idfuncionario = sc.nextInt();
+                                System.out.println("Informe o ID da Encomenda (objeto) a ser retirada:");
+                                int idEncomenda = sc.nextInt();
+                                sc.nextLine();
+
+                                Acoes acoes = new Acoes();
+                                acoes.retirarEncomenda(idfuncionario, idEncomenda);
+
+                                break;
+
+                            case 6:
                                 System.out.println("Saindo do menu funcionário...");
                                 break;
 
