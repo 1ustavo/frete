@@ -82,7 +82,7 @@ public class Main {
 
                 case 2 :
                     while(opcao != 7){
-                        System.out.println("Deseja qual das funções : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir, 6 - Sair, 5 - Retirar Encomenda.(SOMENTE NÚMEROS)");
+                        System.out.println("Deseja qual das funções : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir,5 - Retirar Encomenda.(SOMENTE NÚMEROS), 6 - Sair ");
                         opcao = sc.nextInt();
                         sc.nextLine();
 
@@ -94,7 +94,7 @@ public class Main {
                                 Exibe exb = new Exibe();
                                 exb.exibeFuncionario(nome);
                                 break;
-
+                            // dkjqwidmqowidq
                             case 2 :
                                 System.out.println("Você escolheu cadastrar : ");
                                 System.out.println("Nome : ");

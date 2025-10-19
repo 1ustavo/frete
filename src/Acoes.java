@@ -41,7 +41,7 @@ public class Acoes {
             }
 
             conn.commit();
-            System.out.println("✅ Retirada registrada com sucesso! Ambas as tabelas foram atualizadas.");
+            System.out.println("✅ Retirada registrada com sucesso!");
 
         } catch (SQLException e) {
 

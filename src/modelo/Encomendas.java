@@ -17,7 +17,6 @@ public class Encomendas {
     public String observacoes;
 
     public Encomendas(String codigo, String nome_cliente, String telefone, String email, String documento, String descricao, String transportadora, String status, String observacoes){
-        // Remova a linha 'this.id = id;' que estava no seu código original
         this.codigo = codigo;
         this.nome_cliente = nome_cliente;
         this.telefone = telefone;
