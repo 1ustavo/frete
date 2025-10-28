@@ -14,6 +14,7 @@ public class Delete {
             stmt.setInt(1, id);
             stmt.executeUpdate();
             System.out.println("✅ Encomenda deletada com sucesso!");
+            System.out.println("pablo");
 
         }catch (Exception ez){
             ez.printStackTrace();
