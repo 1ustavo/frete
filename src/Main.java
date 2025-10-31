@@ -133,15 +133,18 @@ public class Main {
                                 del.deleteFuncionario(idDel);
                                 break;
 
-                                case 5 :
-                                System.out.println("--- Registrar  Retirada ---");
-                                System.out.println("Informe o ID do Funcionario que está retirando");
+                            case 5 :
+                                System.out.println("--- Registrar Retirada ---");
+                                Acoes acoes = new Acoes();
+
+                                acoes.listarEncomendasDisponiveis();
+
+                                System.out.println("Informe o ID do Funcionario que está retirando:");
                                 int idfuncionario = sc.nextInt();
                                 System.out.println("Informe o ID da Encomenda (objeto) a ser retirada:");
                                 int idEncomenda = sc.nextInt();
                                 sc.nextLine();
 
-                                Acoes acoes = new Acoes();
                                 acoes.retirarEncomenda(idfuncionario, idEncomenda);
 
                                 break;

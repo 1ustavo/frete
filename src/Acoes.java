@@ -17,22 +17,62 @@ public class Acoes {
             e.printStackTrace();
         }
     }
+    public void listarEncomendasDisponiveis() {
+        String sql = "SELECT id, descricao, nome_cliente FROM objetos WHERE status = 'Aguardando retirada' ORDER BY id ASC";
 
+        try (Connection conn = Conexao.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             java.sql.ResultSet rs = stmt.executeQuery()) {
+
+            System.out.println("\n--- 📦 ENCOMENDAS AGUARDANDO RETIRADA ---");
+            System.out.println("ID   | Cliente             | Descrição");
+            System.out.println("-----------------------------------------------------------------");
+
+            boolean achou = false;
+            while (rs.next()) {
+                achou = true;
+                int idEncomenda = rs.getInt("id");
+                String nomeCliente = rs.getString("nome_cliente");
+                String descricao = rs.getString("descricao");
+
+                System.out.printf("%-4d | %-18s | %s%n", idEncomenda, nomeCliente, descricao);
+            }
+
+            if (!achou) {
+                System.out.println("Nenhuma encomenda disponível para retirada.");
+            }
+            System.out.println("-----------------------------------------------------------------");
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar encomendas: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
     public void retirarEncomenda(int idFuncionario, int idEncomenda) {
         Connection conn = null;
         try {
             conn = Conexao.getConnection();
             conn.setAutoCommit(false);
 
-            String sqlFuncionario = "UPDATE funcionarios SET recebeid = ? WHERE id = ?";
+            String sqlRelacao = """
+            INSERT INTO funcionario_encomenda (id_funcionario, id_encomenda)
+            VALUES (?, ?)
+            ON CONFLICT DO NOTHING
+        """;
 
-            try (PreparedStatement stmtFuncionario = conn.prepareStatement(sqlFuncionario)) {
-                stmtFuncionario.setInt(1, idEncomenda);
-                stmtFuncionario.setInt(2, idFuncionario);
-                stmtFuncionario.executeUpdate();
+            try (PreparedStatement stmt = conn.prepareStatement(sqlRelacao)) {
+                stmt.setInt(1, idFuncionario);
+                stmt.setInt(2, idEncomenda);
+                stmt.executeUpdate();
             }
 
-            String sqlObjeto = "UPDATE objetos SET status = 'Em Rota para o Cliente', retirado_por = ?, data_retirada = NOW() WHERE id = ?";
+            String sqlObjeto = """
+            UPDATE objetos
+            SET status = 'Em Rota para o Cliente',
+                retirado_por = ?,
+                data_retirada = NOW()
+            WHERE id = ?
+        """;
 
             try (PreparedStatement stmtObjeto = conn.prepareStatement(sqlObjeto)) {
                 stmtObjeto.setInt(1, idFuncionario);
@@ -41,10 +81,9 @@ public class Acoes {
             }
 
             conn.commit();
-            System.out.println("✅ Retirada registrada com sucesso!");
+            System.out.println("✅ Encomenda atribuída ao funcionário com sucesso!");
 
         } catch (SQLException e) {
-
             if (conn != null) {
                 try {
                     conn.rollback();
@@ -55,7 +94,6 @@ public class Acoes {
             }
             e.printStackTrace();
         } finally {
-
             if (conn != null) {
                 try {
                     conn.setAutoCommit(true);

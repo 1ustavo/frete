@@ -1,5 +1,8 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Funcionarios {
     public int id;
     public String nome;
@@ -7,8 +10,7 @@ public class Funcionarios {
     public String documento;
     public String senha;
     public int idade;
-
-    public Integer recebeid;
+    public List<Integer> encomendas;
 
     public Funcionarios(String nome, String email, String documento, String senha, int idade){
         this.nome = nome;
@@ -16,18 +18,18 @@ public class Funcionarios {
         this.documento = documento;
         this.senha = senha;
         this.idade = idade;
-        this.recebeid = null;
+        this.encomendas = new ArrayList<>();
     }
 
 
-    public Funcionarios(int id, String nome, String email, String documento, String senha, int idade, Integer recebeid){
+    public Funcionarios(int id, String nome, String email, String documento, String senha, int idade, List<Integer> encomendas){
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.documento = documento;
         this.senha = senha;
         this.idade = idade;
-        this.recebeid = recebeid;
+        this.encomendas = encomendas != null ? encomendas : new ArrayList<>();
     }
 
     public int getId(){
@@ -49,10 +51,12 @@ public class Funcionarios {
         return idade;
     }
 
-    public Integer getRecebeid() {
-        return recebeid;
-    }
-    public void setRecebeid(Integer recebeid) {
-        this.recebeid = recebeid;
+    public List<Integer> getEncomendas() {return encomendas;}
+    public void setEncomendas(List<Integer> encomendas) {this.encomendas = encomendas;}
+
+    public void adicionarEncomenda(Integer idEncomenda){
+        if (!this.encomendas.contains(idEncomenda)){
+            this.encomendas.add(idEncomenda);
+        }
     }
 }
