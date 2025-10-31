@@ -76,12 +76,15 @@ public class Main {
                             case 5 :
                                 System.out.println("Você escolheu sair");
                                 break;
+
+                            default:
+                                System.out.println("Opção inválida. Tente novamente.");
                         }
                     }
                     break;
 
                 case 2 :
-                    while(opcao != 7){
+                    while(opcao != 6){
                         System.out.println("Deseja qual das funções : 1 - Consultar, 2 - Cadastrar, 3 - Alterar, 4 - Excluir,5 - Retirar Encomenda.(SOMENTE NÚMEROS), 6 - Sair ");
                         opcao = sc.nextInt();
                         sc.nextLine();
